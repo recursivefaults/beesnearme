@@ -1,0 +1,29 @@
+<section class="container">
+    <div class="row center">
+        <h4>Tell us about yourself and how we can contact you</h4>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="First Last" id="name" type="text" class="validate" ng-model="registrar.user.name">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="phone" type="tel" ng-model="registrar.user.phone_number" class="validate" placeholder="xxx.xxx.xxxx" pattern="\d{3}\.\d{3}\.\d{4}">
+                    <label for="phone">Phone Number</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="email" type="email" class="validate" ng-model="registrar.user.email">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row" ng-show="registrar.currentLat">
+                <p class="black-text">Current Location: <span class="grey-text"> {{registrar.currentLat}}, {{registrar.currentLong}}</span></p>
+            </div>
+            <div class="row center" ng-show="registrar.currentLat">
+                <input type="submit" class="btn-large wave-effect" ng-click="registrar.createUser()">
+            </div>
+        </form>
+    </div>
+</section>
