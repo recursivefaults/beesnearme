@@ -1,10 +1,10 @@
-RegistrationController = ($q) ->
+RegistrationController = ($q, location) ->
     init = () =>
         @currentLat = null
         @currentLong = null
         @user = {}
         @createUser = createUser
-        getLocation().then updateLocation
+        location().then updateLocation
 
     createUser = () =>
         @user.swarmLocation = [@currentLat, @currentLong]
@@ -17,20 +17,11 @@ RegistrationController = ($q) ->
         @currentLat = position.coords.latitude
         @currentLong = position.coords.longitude
 
-    getLocation = ->
-        promise = $q.defer()
-        if navigator.geolocation
-            navigator.geolocation.getCurrentPosition (position) ->
-                promise.resolve position
-        else
-            promise.reject()
-        promise.promise
-
     init()
 
     return
 
-RegistrationController.$inject = ['$q']
+RegistrationController.$inject = ['$q', 'LocationService']
 
         
 angular.module('bees-near-me').controller 'RegistrationController', RegistrationController

@@ -20,3 +20,4 @@ coffeescript
 materialize:materialize
 angular
 angular:angular-route
+angularui:angular-google-maps

@@ -1,8 +1,8 @@
-
-# counter starts at 0
-Session.setDefault('counter', 0)
-
-angular.module 'bees-near-me', ['angular-meteor', 'ngRoute']
+angular.module 'bees-near-me', [
+    'angular-meteor',
+    'ngRoute',
+    'uiGmapgoogle-maps'
+]
 
 angular.module('bees-near-me').config ($routeProvider) ->
     $routeProvider.when '/', {
@@ -21,6 +21,20 @@ angular.module('bees-near-me').config ($routeProvider) ->
         controller: 'RegistrationController'
         controllerAs: "registrar"
     }
+
+    $routeProvider.when '/map', {
+        templateUrl: 'client/map/map.html'
+        controller: 'MapController'
+        controllerAs: "map"
+    }
+
+angular.module('bees-near-me').config ['uiGmapGoogleMapApiProvider', (mapsProvider) ->
+    mapsProvider.configure {
+        key: 'AIzaSyBQMyvtbd56MQd_wYshtcKvht0rNMbJXEg'
+        libraries: 'weather,geometry,visualization'
+    }
+]
+
 
 
 
