@@ -9,6 +9,7 @@ RegistrationController = ($q, location) ->
     createUser = () =>
         @user.swarmLocation = [@currentLat, @currentLong]
         @user.createdAt = new Date()
+        @user.coords = { latitude: @currentLat, longitude: @currentLong }
         @user.type = "swarm"
         Users.insert @user
         @user = {}

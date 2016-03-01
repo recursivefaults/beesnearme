@@ -4,7 +4,7 @@ angular.module 'bees-near-me', [
     'uiGmapgoogle-maps'
 ]
 
-angular.module('bees-near-me').config ($routeProvider) ->
+angular.module('bees-near-me').config ['$routeProvider', 'uiGmapGoogleMapApiProvider', ($routeProvider, mapsProvider) ->
     $routeProvider.when '/', {
         templateUrl: 'client/landing/landing.html'
         controller: 'LandingPageController'
@@ -28,7 +28,6 @@ angular.module('bees-near-me').config ($routeProvider) ->
         controllerAs: "map"
     }
 
-angular.module('bees-near-me').config ['uiGmapGoogleMapApiProvider', (mapsProvider) ->
     mapsProvider.configure {
         key: 'AIzaSyBQMyvtbd56MQd_wYshtcKvht0rNMbJXEg'
         libraries: 'weather,geometry,visualization'
