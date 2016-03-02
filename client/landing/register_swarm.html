@@ -4,18 +4,24 @@
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <input placeholder="First Last" id="name" type="text" class="validate" ng-model="registrar.user.name">
+                    <input placeholder="First Last" id="name" type="text" class="validate" ng-model="registrar.swarm.name">
                     <label for="name">Name</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="phone" type="tel" ng-model="registrar.user.phone_number" class="validate" placeholder="xxx.xxx.xxxx" pattern="\d{3}\.\d{3}\.\d{4}">
+                    <input id="phone" type="tel" ng-model="registrar.swarm.phone_number" class="validate" placeholder="xxx.xxx.xxxx" pattern="\d{3}\.\d{3}\.\d{4}">
                     <label for="phone">Phone Number</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="email" type="email" class="validate" ng-model="registrar.user.email">
+                    <input id="email" type="email" class="validate" ng-model="registrar.swarm.email">
                     <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="The swarm is..." id="description" type="text" class="validate" ng-model="registrar.swarm.description">
+                    <label for="description">Description</label>
                 </div>
             </div>
             <div class="row" ng-show="registrar.currentLat">

@@ -1,18 +1,19 @@
-RegistrationController = ($q, location) ->
+RegistrationController = (location, $routeParams) ->
     init = () =>
         @currentLat = null
         @currentLong = null
-        @user = {}
+        @swarm ||= {}
+        if $routeParams.swarm_id?
+            @swarm = Swarms.findOne($routeParams.swarm_id)
         @createUser = createUser
         location().then updateLocation
 
     createUser = () =>
-        @user.swarmLocation = [@currentLat, @currentLong]
-        @user.createdAt = new Date()
-        @user.coords = { latitude: @currentLat, longitude: @currentLong }
-        @user.type = "swarm"
-        Users.insert @user
-        @user = {}
+        @swarm.swarmLocation = [@currentLat, @currentLong]
+        @swarm.createdAt = new Date()
+        @swarm.coords = { latitude: @currentLat, longitude: @currentLong }
+        Swarms.insert @swarm
+        @swarm = {}
 
     updateLocation = (position) =>
         @currentLat = position.coords.latitude
@@ -22,7 +23,7 @@ RegistrationController = ($q, location) ->
 
     return
 
-RegistrationController.$inject = ['$q', 'LocationService']
+RegistrationController.$inject = ['LocationService', '$routeParams']
 
         
 angular.module('bees-near-me').controller 'RegistrationController', RegistrationController

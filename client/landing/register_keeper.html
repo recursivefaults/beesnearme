@@ -1,22 +1,73 @@
-<div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <input placeholder="First Last" id="name" type="text" class="validate">
-                <label for="name">Name</label>
-            </div>
+<section class="container" ng-show="!signin.isRegistering">
+    <div class="row center">
+        <div class="col s12">
+            <h3>Sign in</h3>
         </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="phone" type="phone" class="validate">
-                <label for="phone">Phone Number</label>
-            </div>
+        <div class="col s12">
+            <button class="wave-effect btn-large" ng-click="facebookSignIn()"> Sign in with Facebook</button>
         </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-            </div>
+    </div>
+    <div class="row center">
+        <div class="col s12">
+            <h3 class="grey-text">Or...</h3>
         </div>
-    </form>
-</div>
+    </div>
+    <div class="row center">
+        <div class ="col s8" ng-show="signin.errors">
+            <p class="red-text" ng-bind="signin.errors"></p>
+        </div>
+        <form class="col s12">
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input placeholder="user@email.com" id="email" type="email" class="validate" ng-model="signin.email">
+                    <label for="name">E-Mail</label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input id="password" type="password" ng-model="signin.password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row center">
+                <input type="submit" class="btn-large wave-effect" value="Sign In" ng-click="signin.signIn()">
+                <button class="wave-effect btn-large" ng-click="signin.beginRegistration()">Register</button>
+            </div>
+        </form>
+    </div>
+</section>
+<section ng-show="signin.isRegistering">
+    <div class="row center">
+        <form class="col s12">
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input placeholder="user@email.com" id="email" type="email" class="validate" ng-model="signin.email">
+                    <label for="name">E-Mail</label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input id="password" type="password" ng-model="signin.password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input id="confirm_password" type="password" ng-model="signin.confirm">
+                    <label for="confirm_password">Confirm Password</label>
+                </div>
+            </div>
+            <div class="row center">
+                <div class="input-field col s6">
+                    <input id="hive_count" type="number" ng-model="signin.profile.hives">
+                    <label for="hive_count">How many hives?</label>
+                </div>
+            </div>
+            <div class="row center">
+                <input type="submit" class="btn-large wave-effect" value="Register!" ng-click="signin.register()">
+            </div>
+        </form>
+    </div>
+
+</section>
+

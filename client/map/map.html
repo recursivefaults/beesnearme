@@ -1,8 +1,30 @@
 <section class="container" id="map">
+<div class="row center">
+    <div class="col s12 m6 offset-6" ng-show="map.selected">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Swarm - {{map.selected.name}}</span>
+                <p ng-show="map.selected.description" ng-bind="map.selected.description"></p>
+            </div>
+            <div class="card-action">
+                <a href="tel:{{map.selected.phone_number}}">Call</a>
+                <a href="mailto:{{map.selected.email}}">Email</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
 <div class ="row center">
     <div class="angular-google-map-container col s12">
         <ui-gmap-google-map center="map.centerPosition" zoom="map.zoom" events="map.events">
-            <ui-gmap-markers models="map.swarms" coords="'coords'" idKey="'_id'" events="map.events"></ui-gmap-markers>
+        <ui-gmap-markers models="map.swarms" 
+        coords="'coords'" 
+        idKey="'_id'" 
+        events="map.events"
+        click="map.clickMarker"></ui-gmap-markers>
+
         </ui-gmap-google-map>
 
     </div>

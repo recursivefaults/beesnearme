@@ -1,6 +1,7 @@
 angular.module 'bees-near-me', [
     'angular-meteor',
     'ngRoute',
+    'accounts.ui',
     'uiGmapgoogle-maps'
 ]
 
@@ -12,8 +13,8 @@ angular.module('bees-near-me').config ['$routeProvider', 'uiGmapGoogleMapApiProv
 
     $routeProvider.when '/register_keeper', {
         templateUrl: 'client/landing/register_keeper.html'
-        controller: 'RegistrationController'
-        controllerAs: "registrar"
+        controller: 'SigninController'
+        controllerAs: "signin"
     }
 
     $routeProvider.when '/register_swarm', {
@@ -26,6 +27,12 @@ angular.module('bees-near-me').config ['$routeProvider', 'uiGmapGoogleMapApiProv
         templateUrl: 'client/map/map.html'
         controller: 'MapController'
         controllerAs: "map"
+    }
+
+    $routeProvider.when '/swarms/:swarm_id', {
+        templateUrl: 'client/landing/register_swarm.html'
+        controller: 'RegistrationController'
+        controllerAs: "registrar"
     }
 
     mapsProvider.configure {

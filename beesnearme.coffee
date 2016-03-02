@@ -1,1 +1,2 @@
-@Users = new Meteor.Collection 'users'
+@Swarms = new Meteor.Collection 'swarms'
+@Keepers = new Meteor.Collection 'keepers'

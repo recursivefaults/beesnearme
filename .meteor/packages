@@ -21,3 +21,7 @@ materialize:materialize
 angular
 angular:angular-route
 angularui:angular-google-maps
+email
+accounts-facebook
+accounts-password
+dotansimha:accounts-ui-angular

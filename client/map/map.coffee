@@ -7,15 +7,18 @@ MapsController = ($scope, $reactive, location, logger, mapIsReady) ->
         @centerPosition.latitude = 0
         @centerPosition.longitude = 0
         @zoom = 8
+        @clickMarker = clickMarker
         @events = {
 
         }
 
+        @selected = null
+
         @helpers({
             swarms: () =>
-                Users.find({type: 'swarm'})
+                Swarms.find()
             keepers: () =>
-                Users.find({type: 'keeper'})
+                Swarms.find({type: 'keeper'})
         })
 
         location().then (position) ->
@@ -25,6 +28,10 @@ MapsController = ($scope, $reactive, location, logger, mapIsReady) ->
         .then (maps) ->
             @map = maps[0].map
             @map.setCenter {lat:@centerPosition.latitude, lng: @centerPosition.longitude}
+
+    clickMarker = (marker, name, model) =>
+        console.log model
+        @selected = model
 
     init()
 

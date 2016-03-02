@@ -4,8 +4,9 @@ HeaderController = ($scope, $reactive) ->
 
     @helpers({
         swarms: () =>
-            Users.find(type: 'swarm').count()
-
+            Swarms.find().count()
+        keepers: () =>
+            Keepers.find().count()
     })
 
     return
